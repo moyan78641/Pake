@@ -20,6 +20,9 @@ on:
       icon:
         description: 'Icon, Image URL, Optional'
         required: false
+      installer-language:
+        description: 'Set the Windows Installer language. '
+        required: false
       width:
         description: 'Width, Optional'
         required: false
@@ -28,6 +31,10 @@ on:
         description: 'Height, Optional'
         required: false
         default: '780'
+      app-version:
+        description: 'Set the version number of the packaged application to be consistent with the naming format of version in package.json, defaulting to .1.0.0'
+        required: false
+        default: '1.0.0'
       fullscreen:
         description: 'Fullscreen, At startup, Optional'
         required: false
