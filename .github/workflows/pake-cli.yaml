@@ -20,51 +20,31 @@ on:
       icon:
         description: 'Icon, Image URL, Optional'
         required: false
-      width:
-        description: 'Width, Optional'
+      width_height:
+        description: 'Window size (width x height), Optional'
         required: false
-        default: '1200'
-      height:
-        description: 'Height, Optional'
+        default: '1200x780'
+      window_options:
+        description: 'Window options (fullscreen,hide_title_bar,multi_arch), Optional'
         required: false
-        default: '780'
-      fullscreen:
-        description: 'Fullscreen, At startup, Optional'
-        required: false
-        type: boolean
-        default: false
-      hide_title_bar:
-        description: 'Hide TitleBar, MacOS only, Optional'
-        required: false
-        type: boolean
-        default: false
-      multi_arch:
-        description: 'MultiArch, MacOS only, Optional'
-        required: false
-        type: boolean
-        default: false
+        default: 'false,false,false'
       targets:
-        description: 'Targets, Linux only, Optional'
+        description: 'Targets, Linux only (deb,appimage,rpm), Optional'
         required: false
         default: 'deb'
-        type: choice
-        options:
-          - 'deb'
-          - 'appimage'
-          - 'rpm'
       app_version:
         description: 'App version, Optional'
         required: false
         default: '1.0.0'
       installer_language:
-        description: 'Installer language, Windows only, Optional'
+        description: 'Installer language (en-US,zh-CN,ja-JP), Optional'
         required: false
         default: 'en-US'
-        type: choice
-        options:
-          - 'en-US'
-          - 'zh-CN'
-          - 'ja-JP'
+      debug:
+        description: 'Enable debug mode, Optional'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   build:
@@ -146,6 +126,10 @@ jobs:
           FULLSCREEN: ${{ inputs.fullscreen }}
           MULTI_ARCH: ${{ inputs.multi_arch }}
           TARGETS: ${{ inputs.targets }}
+          WIDTH_HEIGHT: ${{ inputs.width_height }}
+          WINDOW_OPTIONS: ${{ inputs.window_options }}
+          TARGETS: ${{ inputs.targets }}
+          DEBUG: ${{ inputs.debug }}
           PKG_CONFIG_PATH: /usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig
           PKG_CONFIG_ALLOW_SYSTEM_LIBS: 1
           PKG_CONFIG_ALLOW_SYSTEM_CFLAGS: 1
