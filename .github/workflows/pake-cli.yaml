@@ -128,7 +128,6 @@ jobs:
           TARGETS: ${{ inputs.targets }}
           WIDTH_HEIGHT: ${{ inputs.width_height }}
           WINDOW_OPTIONS: ${{ inputs.window_options }}
-          TARGETS: ${{ inputs.targets }}
           DEBUG: ${{ inputs.debug }}
           PKG_CONFIG_PATH: /usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig
           PKG_CONFIG_ALLOW_SYSTEM_LIBS: 1
