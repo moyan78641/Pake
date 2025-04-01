@@ -140,13 +140,14 @@ jobs:
         with:
           name: output-${{ inputs.platform }}.zip
           path: |
-            node_modules/pake-cli/output/*.*
-            node_modules/pake-cli/src-tauri/target/debug/*.exe
-            node_modules/pake-cli/src-tauri/target/debug/*.msi
-            node_modules/pake-cli/src-tauri/target/debug/*.pdb
-            node_modules/pake-cli/src-tauri/target/release/*.exe
-            node_modules/pake-cli/src-tauri/target/release/*.msi
-            node_modules/pake-cli/src-tauri/target/release/*.pdb
+            src-tauri/target/debug/*.exe
+            src-tauri/target/debug/*.msi
+            src-tauri/target/debug/*.pdb
+            src-tauri/target/release/*.exe
+            src-tauri/target/release/*.msi
+            src-tauri/target/release/*.pdb
+            src-tauri/target/debug/bundle/**/*
+            src-tauri/target/release/bundle/**/*
           retention-days: 3
 
       - name: Rust cache store
