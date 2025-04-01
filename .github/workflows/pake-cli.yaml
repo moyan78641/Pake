@@ -52,6 +52,19 @@ on:
           - 'deb'
           - 'appimage'
           - 'rpm'
+      app_version:
+        description: 'App version, Optional'
+        required: false
+        default: '1.0.0'
+      installer_language:
+        description: 'Installer language, Windows only, Optional'
+        required: false
+        default: 'en-US'
+        type: choice
+        options:
+          - 'en-US'
+          - 'zh-CN'
+          - 'ja-JP'
 
 jobs:
   build:
@@ -136,6 +149,8 @@ jobs:
           PKG_CONFIG_PATH: /usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig
           PKG_CONFIG_ALLOW_SYSTEM_LIBS: 1
           PKG_CONFIG_ALLOW_SYSTEM_CFLAGS: 1
+          APP_VERSION: ${{ inputs.app_version }}
+          INSTALLER_LANGUAGE: ${{ inputs.installer_language }}
 
       - name: Upload archive
         uses: actions/upload-artifact@v4
